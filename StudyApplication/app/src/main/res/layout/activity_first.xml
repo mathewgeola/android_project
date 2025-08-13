@@ -23,8 +23,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/to_second_activity_button_text"
+        app:layout_constraintBottom_toTopOf="@+id/to_dialog_activity_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/first_activity_textview" />
+
+    <Button
+        android:id="@+id/to_dialog_activity_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/to_dialog_activity_button_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/to_second_activity_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

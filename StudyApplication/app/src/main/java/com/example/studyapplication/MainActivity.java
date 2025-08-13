@@ -1,5 +1,6 @@
 package com.example.studyapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -8,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.example.studyapplication.databinding.ActivityMainBinding;
 
 import java.util.ArrayList;
 
@@ -91,5 +94,29 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Log.d(TAG, "onCreate: ");
+
+        ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        binding.toV3Button.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, FirstActivity.class);
+            startActivity(intent);
+        });
+
+        binding.toV41Button.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, UiDemoActivity.class);
+            startActivity(intent);
+        });
+
+        binding.toV42Button.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, ListViewDemoActivity.class);
+            startActivity(intent);
+        });
+
+        binding.toV43Button.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, RecyclerViewDemoActivity.class);
+            startActivity(intent);
+        });
+
     }
 }

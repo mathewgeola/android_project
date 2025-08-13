@@ -45,11 +45,13 @@ public class FirstActivity extends AppCompatActivity {
 //            intent.putExtra("age", 20);
 //            startActivity(intent);
 
-//            Intent intent = new Intent(this, SecondActivity.class);
-//            intent.putExtra("username", "Alice");
-//            intent.putExtra("age", 20);
-//            launcher.launch(intent);
+            Intent intent = new Intent(this, SecondActivity.class);
+            intent.putExtra("username", "Alice");
+            intent.putExtra("age", 20);
+            launcher.launch(intent);
+        });
 
+        findViewById(R.id.to_dialog_activity_button).setOnClickListener(v -> {
             Intent intent = new Intent(FirstActivity.this, DialogActivity.class);
             startActivity(intent);
         });
