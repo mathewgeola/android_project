@@ -1,6 +1,7 @@
 package com.example.studyapplication;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +12,7 @@ import androidx.core.view.WindowInsetsCompat;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = "MainActivity";
 
     private void testCtrlAltM() {
 //        Ctrl + Alt + M
@@ -88,5 +90,6 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
+        Log.d(TAG, "onCreate: ");
     }
 }

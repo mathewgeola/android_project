@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">StudyApplication</string>
+
+    <string name="first_activity_textview_text">First Activity TextView</string>
+    <string name="to_second_activity_button_text">To Second Activity Button</string>
+    <string name="second_activity_textview_text">Second Activity TextView</string>
+    <string name="finish_second_activity_button_text">Finish Second Activity Button</string>
 </resources>
