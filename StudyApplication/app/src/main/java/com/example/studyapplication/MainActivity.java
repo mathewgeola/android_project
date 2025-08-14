@@ -118,5 +118,10 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        binding.toV5Button.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, FragmentDemoActivity.class);
+            startActivity(intent);
+        });
+
     }
 }

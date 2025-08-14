@@ -5,10 +5,17 @@
     <string name="to_v41_button_text">To V41 Button</string>
     <string name="to_v42_button_text">To V42 Button</string>
     <string name="to_v43_button_text">To V43 Button</string>
+    <string name="to_v5_button_text">To V5 Button</string>
 
     <string name="first_activity_textview_text">First Activity TextView</string>
     <string name="to_second_activity_button_text">To Second Activity Button</string>
     <string name="to_dialog_activity_button_text">To Dialog Activity Button</string>
     <string name="second_activity_textview_text">Second Activity TextView</string>
     <string name="finish_second_activity_button_text">Finish Second Activity Button</string>
+
+    <string name="call_home_fragment_method_button_text">Call Home Fragment Method Button</string>
+    <string name="home_fragment_textview_text">Home Fragment TextView</string>
+    <string name="call_activity_method_button_text">Call Activity Method Button</string>
+    <string name="my_fragment_textview_text">My Fragment TextView</string>
+
 </resources>

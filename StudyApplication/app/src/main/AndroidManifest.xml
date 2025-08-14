@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StudyApplication">
         <activity
+            android:name=".FragmentDemoActivity"
+            android:exported="false" />
+        <activity
             android:name=".RecyclerViewDemoActivity"
             android:exported="false" />
         <activity
