@@ -84,3 +84,19 @@ java.lang.SecurityException: Permission Denial: starting Intent { flg=0x10000000
         at android.os.Binder.execTransact(Binder.java:1365)
 
 ~~~
+
+##### MuMu模拟器
+
+~~~shell
+# https://mumu.163.com/download/
+
+# 找到 MuMu 模拟器的 adb 端口
+$ netstat -ano | findstr "LISTENING" | findstr "7555"
+  TCP    0.0.0.0:7555           0.0.0.0:0              LISTENING       8100
+
+# 用 Android Studio 自带的 adb 连接 MuMu
+$ adb connect 127.0.0.1:7555
+connected to 127.0.0.1:7555
+
+# 在 Android Studio 里选择 MuMu
+~~~

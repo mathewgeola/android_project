@@ -6,6 +6,7 @@
     <string name="to_v42_button_text">To V42 Button</string>
     <string name="to_v43_button_text">To V43 Button</string>
     <string name="to_v5_button_text">To V5 Button</string>
+    <string name="to_v6_button_text">To V6 Button</string>
 
     <string name="first_activity_textview_text">First Activity TextView</string>
     <string name="to_second_activity_button_text">To Second Activity Button</string>
@@ -17,5 +18,13 @@
     <string name="home_fragment_textview_text">Home Fragment TextView</string>
     <string name="call_activity_method_button_text">Call Activity Method Button</string>
     <string name="my_fragment_textview_text">My Fragment TextView</string>
+
+    <string name="http_url_connection_get_btn_text">HttpUrlConnection Get Button</string>
+    <string name="http_url_connection_post_btn_text">HttpUrlConnection Post Button</string>
+    <string name="volley_get_btn_text">Volley Get Button</string>
+    <string name="volley_get_json_btn_text">Volley Get Json Button</string>
+    <string name="okhttp_get_sync_btn_txt">Okhttp Get Sync Button</string>
+    <string name="okhttp_get_async_btn_text">Okhttp Get Async Button</string>
+    <string name="okhttp_post_async_btn_text">Okhttp Post Async Button</string>
 
 </resources>

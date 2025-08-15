@@ -123,5 +123,10 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        binding.toV6Button.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, NetworkDemoActivity.class);
+            startActivity(intent);
+        });
+
     }
 }
