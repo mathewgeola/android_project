@@ -45,4 +45,10 @@ dependencies {
 
     implementation libs.volley
     implementation libs.okhttp
+    implementation libs.retrofit
+    implementation libs.retrofit2.converter.gson
+    implementation libs.gson
+
+    implementation libs.lombok
+    annotationProcessor libs.lombok
 }

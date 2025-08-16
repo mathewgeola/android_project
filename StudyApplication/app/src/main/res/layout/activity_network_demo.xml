@@ -20,60 +20,105 @@
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/http_url_connection_get_btn"
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/http_url_connection_get_btn_text" />
+                    android:layout_height="wrap_content">
 
-                <Button
-                    android:id="@+id/http_url_connection_post_btn"
+                    <Button
+                        android:id="@+id/http_url_connection_get_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/http_url_connection_get_btn_text" />
+
+                    <Button
+                        android:id="@+id/http_url_connection_post_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/http_url_connection_post_btn_text" />
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/http_url_connection_post_btn_text" />
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/volley_get_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/volley_get_btn_text" />
+
+                    <Button
+                        android:id="@+id/volley_get_json_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/volley_get_json_btn_text" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/okhttp_get_sync_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/okhttp_get_sync_btn_txt" />
+
+                    <Button
+                        android:id="@+id/okhttp_get_async_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/okhttp_get_async_btn_text" />
+
+                    <Button
+                        android:id="@+id/okhttp_post_async_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/okhttp_post_async_btn_text" />
+
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/volley_get_btn"
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/volley_get_btn_text" />
+                    android:layout_height="wrap_content">
 
-                <Button
-                    android:id="@+id/volley_get_json_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/volley_get_json_btn_text" />
+                    <Button
+                        android:id="@+id/okhttp_get_async_interceptors_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/okhttp_get_async_interceptors_btn_text" />
 
-            </LinearLayout>
+                    <Button
+                        android:id="@+id/retrofit_get_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/retrofit_get_btn_text" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                    <Button
+                        android:id="@+id/retrofit_post_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/retrofit_post_btn_text" />
 
-                <Button
-                    android:id="@+id/okhttp_get_sync_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/okhttp_get_sync_btn_txt" />
+                    <Button
+                        android:id="@+id/retrofit_post_mock_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/retrofit_post_btn_text" />
 
-                <Button
-                    android:id="@+id/okhttp_get_async_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/okhttp_get_async_btn_text" />
-
-                <Button
-                    android:id="@+id/okhttp_post_async_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/okhttp_post_async_btn_text" />
+                </LinearLayout>
 
             </LinearLayout>
 
