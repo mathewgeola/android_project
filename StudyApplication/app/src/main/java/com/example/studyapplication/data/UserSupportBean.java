@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class SupportBean {
+public class UserSupportBean {
     /*
     {
         "url": "https://contentcaddy.io?utm_source=reqres&utm_medium=json&utm_campaign=referral",

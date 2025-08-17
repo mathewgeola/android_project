@@ -2,6 +2,8 @@ package com.example.studyapplication.api;
 
 import com.example.studyapplication.anno.Mock;
 import com.example.studyapplication.data.CreateUserBean;
+import com.example.studyapplication.data.LoginTokenBean;
+import com.example.studyapplication.data.RegisterTokenBean;
 import com.example.studyapplication.data.SingleUserBean;
 import com.example.studyapplication.data.UserListBean;
 
@@ -49,4 +51,14 @@ public interface ReqResService {
     @Mock(value = "{\n" + "    \"data\": {\n" + "        \"id\": 2,\n" + "        \"email\": \"janet.weaver@reqres.in\",\n" + "        \"first_name\": \"Janet\",\n" + "        \"last_name\": \"Weaver\",\n" + "        \"avatar\": \"https://reqres.in/img/faces/2-image.jpg\"\n" + "    },\n" + "    \"support\": {\n" + "        \"url\": \"https://contentcaddy.io?utm_source=reqres&utm_medium=json&utm_campaign=referral\",\n" + "        \"text\": \"Tired of writing endless social media content? Let Content Caddy generate it for you.\"\n" + "    }\n" + "}")
     @GET("/api/users/{userId}")
     Call<SingleUserBean> getSingleUser(@Path("userId") Integer userId);
+
+    @POST("api/register")
+    @FormUrlEncoded
+    @Headers({"x-api-key: reqres-free-v1"})
+    Call<RegisterTokenBean> register(@Field("email") String email, @Field("password") String password);
+
+    @POST("api/login")
+    @FormUrlEncoded
+    @Headers({"x-api-key: reqres-free-v1"})
+    Call<LoginTokenBean> login(@Field("email") String email, @Field("password") String password);
 }

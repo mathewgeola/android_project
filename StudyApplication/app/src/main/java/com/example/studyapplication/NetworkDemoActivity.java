@@ -1,5 +1,7 @@
 package com.example.studyapplication;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -18,7 +20,10 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.studyapplication.api.ReqResService;
+import com.example.studyapplication.api.RxJavaReqResService;
 import com.example.studyapplication.data.CreateUserBean;
+import com.example.studyapplication.data.LoginTokenBean;
+import com.example.studyapplication.data.RegisterTokenBean;
 import com.example.studyapplication.data.SingleUserBean;
 import com.example.studyapplication.data.UserListBean;
 import com.example.studyapplication.databinding.ActivityNetworkDemoBinding;
@@ -35,14 +40,25 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.concurrent.TimeUnit;
 
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.core.ObservableSource;
+import io.reactivex.rxjava3.core.Observer;
+import io.reactivex.rxjava3.disposables.Disposable;
+import io.reactivex.rxjava3.functions.Consumer;
+import io.reactivex.rxjava3.functions.Function;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+import okhttp3.ResponseBody;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class NetworkDemoActivity extends AppCompatActivity {
@@ -50,6 +66,8 @@ public class NetworkDemoActivity extends AppCompatActivity {
     private static final String TAG = "NetworkDemoActivity";
 
     private ActivityNetworkDemoBinding binding;
+
+    private Disposable mDisposable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -124,11 +142,28 @@ public class NetworkDemoActivity extends AppCompatActivity {
             retrofitPostMock();
         });
 
+        binding.retrofitPostComplexBtn.setOnClickListener(v -> {
+            reInitView();
+            retrofitPostComplex();
+        });
+
+        binding.retrofitPostComplexRxjavaBtn.setOnClickListener(v -> {
+            reInitView();
+            retrofitPostComplexRxJava();
+        });
+
+        binding.retrofitPostComplexRxjavaExampleBtn.setOnClickListener(v -> {
+            reInitView();
+            retrofitPostComplexRxJavaExample();
+        });
     }
 
     private void reInitView() {
         binding.responseStatusTv.setText("");
         binding.responseContentTv.setText("");
+        binding.nameTv.setText("");
+        binding.signTv.setText("");
+        binding.avatarIv.setImageResource(R.mipmap.ic_launcher);
     }
 
     private void httpUrlConnectionGet() {
@@ -453,7 +488,6 @@ public class NetworkDemoActivity extends AppCompatActivity {
         });
     }
 
-
     private void retrofitPostMock() {
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new MockInterceptor()).build();
         Retrofit retrofit = new Retrofit.Builder().client(client).baseUrl("https://reqres.in").addConverterFactory(GsonConverterFactory.create()).build();
@@ -473,5 +507,178 @@ public class NetworkDemoActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void retrofitPostComplex() {
+        Retrofit retrofit = new Retrofit.Builder().baseUrl("https://reqres.in").addConverterFactory(GsonConverterFactory.create()).build();
+        ReqResService service = retrofit.create(ReqResService.class);
+        binding.responseStatusTv.setText("注册中……");
+        service.register("eve.holt@reqres.in", "pistol").enqueue(new retrofit2.Callback<RegisterTokenBean>() {
+            @Override
+            public void onResponse(retrofit2.Call<RegisterTokenBean> call, retrofit2.Response<RegisterTokenBean> response) {
+                RegisterTokenBean registerTokenBean = response.body();
+                binding.responseStatusTv.setText("注册完成");
+                if (registerTokenBean != null) {
+                    binding.responseContentTv.setText("获取到注册 token = " + registerTokenBean.getToken());
+                }
+
+                binding.responseStatusTv.setText("登录中……");
+                service.login("eve.holt@reqres.in", "cityslicka").enqueue(new retrofit2.Callback<LoginTokenBean>() {
+                    @Override
+                    public void onResponse(retrofit2.Call<LoginTokenBean> call, retrofit2.Response<LoginTokenBean> response) {
+                        LoginTokenBean loginTokenBean = response.body();
+                        binding.responseStatusTv.setText("登录完成");
+                        if (loginTokenBean != null) {
+                            binding.responseContentTv.setText("获取到登录 token = " + loginTokenBean.getToken());
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(retrofit2.Call<LoginTokenBean> call, Throwable t) {
+
+                    }
+                });
+            }
+
+            @Override
+            public void onFailure(retrofit2.Call<RegisterTokenBean> call, Throwable throwable) {
+
+            }
+        });
+    }
+
+    private void retrofitPostComplexRxJava() {
+        Retrofit retrofit = new Retrofit.Builder().baseUrl("https://reqres.in").addConverterFactory(GsonConverterFactory.create()).addCallAdapterFactory(RxJava3CallAdapterFactory.create()).build();
+        RxJavaReqResService service = retrofit.create(RxJavaReqResService.class);
+        service.register("eve.holt@reqres.in", "pistol").subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).doOnNext(new Consumer<RegisterTokenBean>() {
+            @Override
+            public void accept(RegisterTokenBean registerTokenBean) throws Throwable {
+                binding.responseStatusTv.setText("注册完成");
+                if (registerTokenBean != null) {
+                    binding.responseContentTv.setText("获取到注册 token = " + registerTokenBean.getToken());
+                }
+
+                binding.responseStatusTv.setText("等待中……");
+            }
+        }).observeOn(Schedulers.io()).concatMap(new Function<RegisterTokenBean, ObservableSource<RegisterTokenBean>>() {
+            @Override
+            public ObservableSource<RegisterTokenBean> apply(RegisterTokenBean registerTokenBean) throws Throwable {
+                return Observable.just(registerTokenBean).delay(3, TimeUnit.SECONDS);
+            }
+        }).observeOn(AndroidSchedulers.mainThread()).doOnNext(new Consumer<RegisterTokenBean>() {
+            @Override
+            public void accept(RegisterTokenBean registerTokenBean) throws Throwable {
+                binding.responseStatusTv.setText("等待结束");
+                binding.responseStatusTv.setText("登录中……");
+            }
+        }).observeOn(Schedulers.io()).concatMap(new Function<RegisterTokenBean, ObservableSource<LoginTokenBean>>() {
+            @Override
+            public ObservableSource<LoginTokenBean> apply(RegisterTokenBean registerTokenBean) throws Throwable {
+                return service.login("eve.holt@reqres.in", "cityslicka");
+            }
+        }).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<LoginTokenBean>() {
+            @Override
+            public void onSubscribe(@io.reactivex.rxjava3.annotations.NonNull Disposable d) {
+                mDisposable = d;
+                binding.responseStatusTv.setText("注册中……");
+            }
+
+            @Override
+            public void onNext(@io.reactivex.rxjava3.annotations.NonNull LoginTokenBean loginTokenBean) {
+                if (loginTokenBean != null) {
+                    binding.responseContentTv.setText("获取到登录 token = " + loginTokenBean.getToken());
+                }
+            }
+
+            @Override
+            public void onError(@io.reactivex.rxjava3.annotations.NonNull Throwable e) {
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onComplete() {
+                binding.responseStatusTv.setText("登录完成");
+            }
+        });
+    }
+
+    private void retrofitPostComplexRxJavaExample() {
+        Retrofit retrofit = new Retrofit.Builder().baseUrl("https://reqres.in").addConverterFactory(GsonConverterFactory.create()).addCallAdapterFactory(RxJava3CallAdapterFactory.create()).build();
+
+        RxJavaReqResService service = retrofit.create(RxJavaReqResService.class);
+
+        service.register("eve.holt@reqres.in", "pistol").subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).doOnNext(new Consumer<RegisterTokenBean>() {
+            @Override
+            public void accept(RegisterTokenBean registerTokenBean) throws Throwable {
+                if (registerTokenBean != null) {
+                    binding.responseContentTv.setText("获取到注册 token = " + registerTokenBean.getToken() + "，注册 id = " + registerTokenBean.getId());
+                }
+            }
+        }).observeOn(AndroidSchedulers.mainThread()).map(new Function<RegisterTokenBean, Integer>() {
+            @Override
+            public Integer apply(RegisterTokenBean registerTokenBean) throws Throwable {
+                return registerTokenBean.getId();
+            }
+        }).observeOn(Schedulers.io()).concatMap(new Function<Integer, ObservableSource<SingleUserBean>>() {
+            @Override
+            public ObservableSource<SingleUserBean> apply(Integer userId) throws Throwable {
+                return service.getSingleUser(userId);
+            }
+        }).observeOn(AndroidSchedulers.mainThread()).doOnNext(new Consumer<SingleUserBean>() {
+            @Override
+            public void accept(SingleUserBean singleUserBean) throws Throwable {
+                binding.nameTv.setText(singleUserBean.getData().getFirstName() + "-" + singleUserBean.getData().getLastName());
+                binding.signTv.setText(singleUserBean.getSupport().getText());
+            }
+        }).observeOn(AndroidSchedulers.mainThread()).map(new Function<SingleUserBean, String>() {
+            @Override
+            public String apply(SingleUserBean singleUserBean) throws Throwable {
+                String avatar = singleUserBean.getData().getAvatar();
+//                "https://reqres.in/img/faces/2-image.jpg"
+                String[] paths = avatar.split("/");
+                return paths[paths.length - 1];
+            }
+        }).observeOn(Schedulers.io()).concatMap(new Function<String, ObservableSource<ResponseBody>>() {
+            @Override
+            public ObservableSource<ResponseBody> apply(String path) throws Throwable {
+                return service.getAvatar(path);
+            }
+        }).observeOn(AndroidSchedulers.mainThread()).map(new Function<ResponseBody, Bitmap>() {
+            @Override
+            public Bitmap apply(ResponseBody responseBody) throws Throwable {
+                return BitmapFactory.decodeStream(responseBody.byteStream());
+            }
+        }).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<Bitmap>() {
+            @Override
+            public void onSubscribe(@io.reactivex.rxjava3.annotations.NonNull Disposable d) {
+                mDisposable = d;
+                binding.responseStatusTv.setText("注册中……");
+            }
+
+            @Override
+            public void onNext(@io.reactivex.rxjava3.annotations.NonNull Bitmap bitmap) {
+                binding.avatarIv.setImageBitmap(bitmap);
+            }
+
+            @Override
+            public void onError(@io.reactivex.rxjava3.annotations.NonNull Throwable e) {
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onComplete() {
+                binding.responseStatusTv.setText("获取完成");
+            }
+        });
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        if (mDisposable != null && !mDisposable.isDisposed()) {
+            mDisposable.dispose();
+        }
     }
 }

@@ -83,5 +83,5 @@ public class UserListBean {
     List<UserBean> data;
 
     @SerializedName("support")
-    SupportBean support;
+    UserSupportBean support;
 }

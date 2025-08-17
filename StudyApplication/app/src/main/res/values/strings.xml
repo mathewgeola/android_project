@@ -29,6 +29,9 @@
     <string name="okhttp_get_async_interceptors_btn_text">Okhttp Get Async Interceptors Button</string>
     <string name="retrofit_get_btn_text">Retrofit Get Button</string>
     <string name="retrofit_post_btn_text">Retrofit Post Button</string>
-    <string name="retrofit_post_mock_btn_text">Retrofit Post Mock</string>
+    <string name="retrofit_post_mock_btn_text">Retrofit Post Mock Button</string>
+    <string name="retrofit_post_complex_btn_text">Retrofit Post Complex Button</string>
+    <string name="retrofit_post_complex_rxjava_btn_text">Retrofit Post Complex RxJava Button</string>
+    <string name="retrofit_post_complex_rxjava_example_btn_text">Retrofit Post Complex RxJava Example Button</string>
 
 </resources>
