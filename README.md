@@ -100,3 +100,10 @@ connected to 127.0.0.1:7555
 
 # 在 Android Studio 里选择 MuMu
 ~~~
+
+##### Plugins 插件
+
+~~~
+Lombok
+~~~
+

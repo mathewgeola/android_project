@@ -128,5 +128,10 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        binding.toV10Button.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, BroadcastDemoActivity.class);
+            startActivity(intent);
+        });
+
     }
 }
