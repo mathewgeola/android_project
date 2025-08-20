@@ -8,6 +8,7 @@
     <string name="to_v5_button_text">To V5 Button</string>
     <string name="to_v6_button_text">To V6 Button</string>
     <string name="to_v10_button_text">To V10 Button</string>
+    <string name="to_v13_button_text">To V13 Button</string>
 
     <string name="first_activity_textview_text">First Activity TextView</string>
     <string name="to_second_activity_button_text">To Second Activity Button</string>

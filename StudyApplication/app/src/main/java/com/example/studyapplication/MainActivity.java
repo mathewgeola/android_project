@@ -168,5 +168,10 @@ public class MainActivity extends AppCompatActivity {
                 Log.d(TAG, "onCreate handler.post: threadDetect = " + threadDetect());
             });
         }).start();
+
+        binding.toV13Button.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, ServiceDemoActivity.class);
+            startActivity(intent);
+        });
     }
 }
