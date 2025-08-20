@@ -2,6 +2,8 @@ package com.example.studyapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 
 import androidx.activity.EdgeToEdge;
@@ -82,6 +84,16 @@ public class MainActivity extends AppCompatActivity {
         } while (true);
     }
 
+    public static String threadDetect() {
+        String threadName = "default";
+        try {
+            threadName = Looper.myLooper().getThread().getName();
+        } catch (Exception ignored) {
+
+        }
+        return threadName;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -133,5 +145,28 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        Log.d(TAG, "主线程 Looper: " + Looper.getMainLooper());
+        Log.d(TAG, "当前线程 Looper: " + Looper.myLooper());
+
+        Handler handler = new Handler(Looper.getMainLooper());
+        new Thread(() -> {
+            handler.post(() -> {
+                Log.d(TAG, "handler 主线程 Looper: " + Looper.getMainLooper());
+                Log.d(TAG, "handler 当前线程 Looper: " + Looper.myLooper());
+            });
+        }).start();
+
+
+        new Thread(() -> {
+            Log.d(TAG, "onCreate Thread: threadDetect = " + threadDetect());
+
+            runOnUiThread(() -> {
+                Log.d(TAG, "onCreate runOnUiThread: threadDetect = " + threadDetect());
+            });
+
+            handler.post(() -> {
+                Log.d(TAG, "onCreate handler.post: threadDetect = " + threadDetect());
+            });
+        }).start();
     }
 }
