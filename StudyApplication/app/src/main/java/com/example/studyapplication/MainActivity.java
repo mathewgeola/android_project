@@ -178,5 +178,10 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, ContentProviderDemoActivity.class);
             startActivity(intent);
         });
+
+        binding.toV15Button.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, ReflectionDemoActivity.class);
+            startActivity(intent);
+        });
     }
 }
