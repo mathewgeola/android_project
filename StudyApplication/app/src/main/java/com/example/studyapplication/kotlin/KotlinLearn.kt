@@ -1,4 +1,4 @@
-package com.example.studyapplication
+package com.example.studyapplication.kotlin
 
 
 fun main() {
