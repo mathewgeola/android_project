@@ -9,6 +9,16 @@ public class JavaExpressionTest {
         return a + b;
     }
 
+    public static class User {
+        final String username;
+        final String desc;
+
+        public User(String username, String desc) {
+            this.username = username;
+            this.desc = desc;
+        }
+    }
+
     @Test
     public void test() {
         int nextInt = new Random().nextInt();

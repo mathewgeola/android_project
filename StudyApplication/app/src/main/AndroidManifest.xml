@@ -16,6 +16,9 @@
         android:theme="@style/Theme.StudyApplication"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".JavaToKotlinActivity"
+            android:exported="false" />
+        <activity
             android:name=".ReflectionDemoActivity"
             android:exported="false" />
         <activity

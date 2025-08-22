@@ -183,5 +183,10 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, ReflectionDemoActivity.class);
             startActivity(intent);
         });
+
+        binding.toV18Button.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, JavaToKotlinActivity.class);
+            startActivity(intent);
+        });
     }
 }

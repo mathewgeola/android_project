@@ -11,6 +11,7 @@
     <string name="to_v13_button_text">To V13 Button</string>
     <string name="to_v14_button_text">To V14 Button</string>
     <string name="to_v15_button_text">To V15 Button</string>
+    <string name="to_v18_button_text">To V18 Button</string>
 
     <string name="first_activity_textview_text">First Activity TextView</string>
     <string name="to_second_activity_button_text">To Second Activity Button</string>
