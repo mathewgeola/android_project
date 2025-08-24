@@ -2,6 +2,18 @@ package com.example.studyapplication.kotlin
 
 import java.util.Random
 
+fun String.lastChar(): Char? {
+    if (isEmpty()) {
+        return null
+    }
+//    return this[length - 1]
+    return get(length - 1)
+}
+
+fun String.lastChr(): Char? = if (isEmpty()) null else get(length - 1)
+
+val String.isStar: Boolean
+    get() = this == "*"
 
 fun main() {
     val nextInt = Random().nextInt();
@@ -103,4 +115,10 @@ fun main() {
         0
     }
     println(c)
+
+    println("hello world".lastChar())
+    println("hello world".lastChr())
+
+    println("hello world".isStar)
+    println("*".isStar)
 }

@@ -79,6 +79,7 @@ class User(val username: String, val desc: String) {
     }
 }
 
+data class Person(val username: String, val desc: String)
 
 fun main() {
     println(add(1, 2))
@@ -127,6 +128,9 @@ fun main() {
     val username1 = user.username
     val desc1 = user.desc
     val (username2, desc2) = user
-    println("username1 = $username1 desc1 = $desc1")
-    println("username2 = $username2 desc2 = $desc2")
+    println("username1 = $username1, desc1 = $desc1")
+    println("username2 = $username2, desc2 = $desc2")
+
+    val person = Person("tom", "how are you")
+    println("username = ${person.username}, desc2 = ${person.desc}")
 }
