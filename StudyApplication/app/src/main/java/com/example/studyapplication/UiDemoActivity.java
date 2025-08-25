@@ -1,7 +1,7 @@
 package com.example.studyapplication;
 
 import android.os.Bundle;
-import android.text.Editable;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -10,7 +10,6 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.example.studyapplication.databinding.ActivityMainBinding;
 import com.example.studyapplication.databinding.ActivityUiDemoBinding;
 
 public class UiDemoActivity extends AppCompatActivity {
@@ -30,6 +29,16 @@ public class UiDemoActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         binding.textview.setText("java text");
+
+        class ButtonOnClickListenerClass implements View.OnClickListener {
+
+            @Override
+            public void onClick(View v) {
+
+            }
+        }
+
+        binding.button.setOnClickListener(new ButtonOnClickListenerClass());
 
         binding.button.setOnClickListener(v -> {
             String string = binding.edittext.getText().toString();

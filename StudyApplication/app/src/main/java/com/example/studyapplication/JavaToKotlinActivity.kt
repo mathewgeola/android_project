@@ -2,6 +2,7 @@ package com.example.studyapplication
 
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.OnApplyWindowInsetsListener
@@ -48,5 +49,12 @@ class JavaToKotlinActivity : AppCompatActivity() {
         user?.also {
             println(it)
         }
+
+        findViewById<TextView>(R.id.textview).setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+            }
+        })
+
+        findViewById<TextView>(R.id.textview).setOnClickListener { }
     }
 }
