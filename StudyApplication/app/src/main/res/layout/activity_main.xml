@@ -115,4 +115,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/to_v15_button" />
 
+    <Button
+        android:id="@+id/to_v23_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/to_v23_button_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/to_v18_button" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

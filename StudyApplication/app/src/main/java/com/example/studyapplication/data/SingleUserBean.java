@@ -2,11 +2,6 @@ package com.example.studyapplication.data;
 
 import com.google.gson.annotations.SerializedName;
 
-import lombok.Getter;
-import lombok.Setter;
-
-@Getter
-@Setter
 public class SingleUserBean {
     /*
     {
@@ -28,4 +23,20 @@ public class SingleUserBean {
 
     @SerializedName("support")
     UserSupportBean support;
+
+    public UserBean getData() {
+        return data;
+    }
+
+    public void setData(UserBean data) {
+        this.data = data;
+    }
+
+    public UserSupportBean getSupport() {
+        return support;
+    }
+
+    public void setSupport(UserSupportBean support) {
+        this.support = support;
+    }
 }

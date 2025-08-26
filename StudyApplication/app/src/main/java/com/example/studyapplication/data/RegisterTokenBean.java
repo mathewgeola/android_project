@@ -2,11 +2,6 @@ package com.example.studyapplication.data;
 
 import com.google.gson.annotations.SerializedName;
 
-import lombok.Getter;
-import lombok.Setter;
-
-@Getter
-@Setter
 public class RegisterTokenBean {
     /*
     {"id":4,"token":"QpwL5tke4Pnpja7X4"}
@@ -18,5 +13,19 @@ public class RegisterTokenBean {
     @SerializedName("token")
     String token;
 
+    public Integer getId() {
+        return id;
+    }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
 }

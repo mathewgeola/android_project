@@ -2,11 +2,7 @@ package com.example.studyapplication.data;
 
 import com.google.gson.annotations.SerializedName;
 
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
 public class UserSupportBean {
     /*
     {
@@ -20,4 +16,20 @@ public class UserSupportBean {
 
     @SerializedName("text")
     String text;
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
 }
