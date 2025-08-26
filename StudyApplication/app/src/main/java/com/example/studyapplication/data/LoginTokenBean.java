@@ -2,11 +2,7 @@ package com.example.studyapplication.data;
 
 import com.google.gson.annotations.SerializedName;
 
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
 public class LoginTokenBean {
     /*
     {"token":"QpwL5tke4Pnpja7X4"}
@@ -14,4 +10,12 @@ public class LoginTokenBean {
 
     @SerializedName("token")
     String token;
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
 }
